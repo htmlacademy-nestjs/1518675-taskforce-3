@@ -1,7 +1,7 @@
 # Личный проект «TaskForce»
 
 * Студент: [Никита Шишкин](https://up.htmlacademy.ru/nodejs-2/3/user/1518675).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Наумов](https://htmlacademy.ru/profile/id99424).
 
 ---
 
