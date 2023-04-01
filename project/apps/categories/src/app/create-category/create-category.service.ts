@@ -16,10 +16,10 @@ export class CreateCategoryService {
       category,
     };
 
-    const existTag = await this.advertCategoryRepository
+    const existCategory = await this.advertCategoryRepository
       .findByName(category);
 
-    if (existTag) {
+    if (existCategory) {
       throw new ConflictException('Категория уже создана');
     }
 

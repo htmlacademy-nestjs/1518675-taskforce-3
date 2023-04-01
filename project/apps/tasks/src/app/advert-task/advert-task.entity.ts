@@ -30,14 +30,4 @@ export class AdvertTaskEntity implements Task {
     this.tags = advertTask.tags;
     this.city = advertTask.city;
   }
-
-  // public async setPassword(password: string): Promise<AdvertTaskEntity> {
-  //   const salt = await genSalt(SALT_ROUNDS);
-  //   this.passwordHash = await hash(password, salt);
-  //   return this;
-  // }
-
-  // public async comparePassword(password: string): Promise<boolean> {
-  //   return compare(password, this.passwordHash);
-  // }
 }

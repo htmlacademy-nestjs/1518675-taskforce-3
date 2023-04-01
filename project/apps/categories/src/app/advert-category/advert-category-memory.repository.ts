@@ -1,11 +1,14 @@
 import {Injectable} from '@nestjs/common';
-import {CRUDRepository} from '@project/util/util-types';
+import {CRUDRepository, GetListParams} from '@project/util/util-types';
 import {Category} from '@project/shared/app-types';
 import crypto from 'crypto';
 import {AdvertCategoryEntity} from './advert-category.entity';
 
 @Injectable()
-export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCategoryEntity, string, Category> {
+export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCategoryEntity, string, Category>, GetListParams {
+  offset: number;
+  limit: number;
+
   findById(id: string): Promise<Category> {
       throw new Error('Method not implemented.');
   }
@@ -41,5 +44,10 @@ export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCate
 
   public async update(id: string, item: AdvertCategoryEntity): Promise<Category> {
     return item;
+  }
+
+  public async getList(getListParams: GetListParams): Promise<Category[]> {
+
+    return null;
   }
 }

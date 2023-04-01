@@ -7,5 +7,6 @@ import {CreateTaskService} from './create-task.service';
   imports: [AdvertTaskModule],
   controllers: [CreateTaskController],
   providers: [CreateTaskService],
+  exports: [CreateTaskService]
 })
 export class CreateTaskModule {}

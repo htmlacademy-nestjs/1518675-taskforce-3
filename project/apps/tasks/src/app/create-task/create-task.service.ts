@@ -38,22 +38,6 @@ export class CreateTaskService {
       .create(taskEntity);
   }
 
-  // public async verifyUser(dto: LoginUserDto) {
-  //   const {email, password} = dto;
-  //   const existUser = await this.advertUserRepository.findByEmail(email);
-  //
-  //   if (!existUser) {
-  //     throw new NotFoundException(AUTH_USER_NOT_FOUND);
-  //   }
-  //
-  //   const advertUserEntity = new AdvertUserEntity(existUser);
-  //   if (!await advertUserEntity.comparePassword(password)) {
-  //     throw new UnauthorizedException(AUTH_USER_PASSWORD_WRONG);
-  //   }
-  //
-  //   return advertUserEntity.toObject();
-  // }
-  //
   public async getTask(id: string) {
     return this.advertTaskRepository.findById(id);
   }

@@ -1,5 +1,5 @@
-import {CRUDRepository} from '@project/util/util-types';
-import {Task, User} from '@project/shared/app-types';
+import {CRUDRepository, GetListParams} from '@project/util/util-types';
+import {Category, Task, User} from '@project/shared/app-types';
 import {Injectable} from '@nestjs/common';
 import crypto from 'crypto';
 import {AdvertTaskEntity} from './advert-task.entity';
@@ -23,17 +23,6 @@ export class AdvertTaskMemoryRepository implements CRUDRepository<AdvertTaskEnti
     return null;
   }
 
-  // public async findByEmail(email: string): Promise<User | null> {
-  //   const existUser = Object.values(this.repository)
-  //     .find((userItem) => userItem.email === email);
-  //
-  //   if (!existUser) {
-  //     return null;
-  //   }
-  //
-  //   return {...existUser};
-  // }
-
   public async destroy(id: string): Promise<void> {
     delete this.repository[id];
   }
@@ -41,5 +30,10 @@ export class AdvertTaskMemoryRepository implements CRUDRepository<AdvertTaskEnti
   public async update(id: string, item: AdvertTaskEntity): Promise<Task> {
     this.repository[id] = {...item.toObject(), _id: id};
     return this.findById(id);
+  }
+
+  public async getList(getListParams: GetListParams): Promise<Task[]> {
+
+    return null;
   }
 }
