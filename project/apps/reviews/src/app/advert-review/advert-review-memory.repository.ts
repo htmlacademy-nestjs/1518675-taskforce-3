@@ -1,11 +1,11 @@
 import {Injectable} from '@nestjs/common';
-import {CRUDRepository, GetListParams} from '@project/util/util-types';
+import {CRUDRepository, GetListParams, GetListRepository} from '@project/util/util-types';
 import {Review} from '@project/shared/app-types';
 import crypto from 'crypto';
 import {AdvertReviewEntity} from './advert-review.entity';
 
 @Injectable()
-export class AdvertReviewMemoryRepository implements CRUDRepository<AdvertReviewEntity, string, Review>, GetListParams {
+export class AdvertReviewMemoryRepository implements CRUDRepository<AdvertReviewEntity, string, Review>, GetListRepository<any> {
   offset: number;
   limit: number;
 
@@ -36,6 +36,6 @@ export class AdvertReviewMemoryRepository implements CRUDRepository<AdvertReview
 
   public async getList(getListParams: GetListParams): Promise<Review[]> {
 
-    return null;
+    return [];
   }
 }

@@ -1,11 +1,11 @@
 import {Injectable} from '@nestjs/common';
-import {CRUDRepository, GetListParams} from '@project/util/util-types';
+import {CRUDRepository, GetListParams, GetListRepository} from '@project/util/util-types';
 import {Category} from '@project/shared/app-types';
 import crypto from 'crypto';
 import {AdvertCategoryEntity} from './advert-category.entity';
 
 @Injectable()
-export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCategoryEntity, string, Category>, GetListParams {
+export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCategoryEntity, string, Category>, GetListRepository<any> {
   offset: number;
   limit: number;
 
@@ -48,6 +48,6 @@ export class AdvertCategoryMemoryRepository implements CRUDRepository<AdvertCate
 
   public async getList(getListParams: GetListParams): Promise<Category[]> {
 
-    return null;
+    return [];
   }
 }

@@ -1,11 +1,11 @@
-import {CRUDRepository, GetListParams} from '@project/util/util-types';
+import {CRUDRepository, GetListParams, GetListRepository} from '@project/util/util-types';
 import {Category, Task, User} from '@project/shared/app-types';
 import {Injectable} from '@nestjs/common';
 import crypto from 'crypto';
 import {AdvertTaskEntity} from './advert-task.entity';
 
 @Injectable()
-export class AdvertTaskMemoryRepository implements CRUDRepository<AdvertTaskEntity, string, Task> {
+export class AdvertTaskMemoryRepository implements CRUDRepository<AdvertTaskEntity, string, Task>, GetListRepository<any> {
   private repository: { [key: string]: Task } = {};
 
   public async create(item: AdvertTaskEntity): Promise<Task> {
@@ -34,6 +34,6 @@ export class AdvertTaskMemoryRepository implements CRUDRepository<AdvertTaskEnti
 
   public async getList(getListParams: GetListParams): Promise<Task[]> {
 
-    return null;
+    return [];
   }
 }
