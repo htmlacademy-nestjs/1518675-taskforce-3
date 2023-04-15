@@ -1,8 +1,8 @@
 import {ApiProperty} from '@nestjs/swagger';
 
-export class AdvertCategoriesRdo {
+export class AdvertCategoryRdo {
   @ApiProperty({
-    description: 'Tags array',
+    description: 'Categories array',
     example: 'Юридические услуги, Ремонт бытовой техники'
   })
   public tagNames: [];

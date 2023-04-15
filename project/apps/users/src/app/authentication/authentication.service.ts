@@ -1,4 +1,4 @@
-import {ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
 import {UserRole} from '@project/shared/app-types';
 import dayjs from 'dayjs';

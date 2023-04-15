@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  taskId      Int      @id @default(autoincrement())
+  title       String   @default("")
+  description String   @default("")
+  category    Category @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade, onUpdate: Cascade)
+  categoryId  Int      @map("category_id")
+  price       String   @default("")
+  image       String   @default("")
+  address     String   @default("")
+  tags        Tag[]
+  city        String   @default("")
+  createdAt   DateTime @default(now()) @map("created_at")
+  publishAt   DateTime @updatedAt @map("publish_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  userId      String?  @map("user_id")
+
+  @@map("tasks")
+}
+
+model Category {
+  categoryId Int      @id @default(autoincrement()) @map("category_id")
+  category   String
+  createdAt  DateTime @default(now()) @map("created_at")
+  tasks      Task[]
+
+  @@map("categories")
+}
+
+model Review {
+  reviewId      Int      @id @default(autoincrement())
+  category      String
+  text          String
+  rating        Int
+  completeValue Boolean  @default(false)
+  user          String
+  userId        Int       @map("user_id")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("reviews")
+}
+
+model Tag {
+  tagId     Int      @id @default(autoincrement()) @map("tag_id")
+  tagName   String
+  createdAt DateTime @default(now()) @map("created_at")
+  tasks     Task[]
+
+  @@map("tags")
+}

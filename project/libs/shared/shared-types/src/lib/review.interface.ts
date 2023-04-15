@@ -1,6 +1,6 @@
 export interface Review {
-  _id?: string;
+  id?: number;
   text: string;
-  completeId: string;
+  completeValue: string;
   rating: number;
 }

@@ -1,35 +1,35 @@
-import {ConflictException, Injectable} from '@nestjs/common';
-import {CreateCategoryDto} from './dto/create-category.dto';
-import {AdvertCategoryMemoryRepository} from '../advert-category/advert-category-memory.repository';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { Category } from '@project/shared/app-types';
+import { AdvertCategoryRepository } from './advert-category.repository';
+import { Injectable } from '@nestjs/common';
+// import { AdvertCategoryEntity } from './advert-category.entity';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 import {AdvertCategoryEntity} from '../advert-category/advert-category.entity';
 
 @Injectable()
 export class CreateCategoryService {
   constructor(
-    private readonly advertCategoryRepository: AdvertCategoryMemoryRepository
+    private readonly advertCategoryRepository: AdvertCategoryRepository
   ) {}
 
-  public async createCategory(dto: CreateCategoryDto) {
-    const {category} = dto;
-
-    const advertCategory = {
-      category,
-    };
-
-    const existCategory = await this.advertCategoryRepository
-      .findByName(category);
-
-    if (existCategory) {
-      throw new ConflictException('Категория уже создана');
-    }
-
-    const categoryEntity = await new AdvertCategoryEntity(advertCategory);
-
-    return this.advertCategoryRepository
-      .create(categoryEntity);
+  async createCategory(dto: CreateCategoryDto): Promise<Category> {
+    const categoryEntity = new AdvertCategoryEntity(dto);
+    return this.advertCategoryRepository.create(categoryEntity);
   }
 
-  public async getCategories() {
-    return this.advertCategoryRepository.findAllCategories();
+  async deleteCategory(id: number): Promise<void> {
+    this.advertCategoryRepository.destroy(id);
+  }
+
+  async getCategory(id: number): Promise<Category> {
+    return this.advertCategoryRepository.findById(id);
+  }
+
+  async getCategories(): Promise<Category[]> {
+    return this.advertCategoryRepository.find();
+  }
+
+  async updateCategory(id: number, dto: UpdateCategoryDto): Promise<Category> {
+    return this.advertCategoryRepository.update(id, new AdvertCategoryEntity(dto));
   }
 }
