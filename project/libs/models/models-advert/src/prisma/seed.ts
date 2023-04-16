@@ -7,7 +7,7 @@ async function fillDb() {
     where: { categoryId: 1 },
     update: {},
     create: {
-      category: 'Юридические услуги',
+      name: 'Юридические услуги',
       tasks: {
         create: [
           {
@@ -34,7 +34,7 @@ async function fillDb() {
     where: { categoryId: 2 },
     update: {},
     create: {
-      category: 'Установка кондиционеров',
+      name: 'Установка кондиционеров',
       tasks: {
         create: [
           {
@@ -55,6 +55,18 @@ async function fillDb() {
           },
         ]
       },
+    }
+  });
+  await prisma.review.upsert({
+    where: { reviewId: 1 },
+    update: {},
+    create: {
+      text: 'Работа выолнена неплохо',
+      rating: 4,
+      completeValue: false,
+      userId: 24,
+      category: 'Установка техники',
+      user: 'Пепега'
     }
   });
   console.info('🤘️ Database was filled')

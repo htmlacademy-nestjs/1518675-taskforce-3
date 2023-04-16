@@ -1,6 +1,6 @@
 export interface Review {
-  id?: number;
+  reviewId?: number;
   text: string;
-  completeValue: string;
+  completeValue: boolean;
   rating: number;
 }

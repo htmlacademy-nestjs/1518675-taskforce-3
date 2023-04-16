@@ -1,8 +1,8 @@
-import {Category, Tag, Task} from '@project/shared/app-types';
 import {Entity} from '@project/util/util-types';
+import {Category, Tag, Task} from '@project/shared/shared-types';
 
 export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
-  public id: number;
+  public taskId: number;
   public title: string;
   public description: string;
   public category: Category;
@@ -19,7 +19,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
   }
 
   public fillEntity(advertTask: Task): void {
-    this.id = advertTask.id;
+    this.taskId = advertTask.taskId;
     this.title = advertTask.title;
     this.description = advertTask.description;
     this.category = advertTask.category;

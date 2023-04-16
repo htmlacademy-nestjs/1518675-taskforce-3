@@ -1,6 +1,8 @@
 import {ApiProperty} from '@nestjs/swagger';
 
 export class CreateReviewDto {
+  public reviewId: number;
+
   @ApiProperty({
     description: 'Review text',
     example: 'Отличный заказчик. Работа сделана безукоризненно!'
@@ -14,8 +16,8 @@ export class CreateReviewDto {
   public rating: number;
 
   @ApiProperty({
-    description: 'Review customer ID',
-    example: '82160152'
+    description: 'Review complete task status',
+    example: false
   })
-  public completeId: string;
+  public completeValue: boolean;
 }

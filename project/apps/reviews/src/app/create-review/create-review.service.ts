@@ -1,37 +1,38 @@
 import {ConflictException, Injectable} from '@nestjs/common';
 import {CreateReviewDto} from './dto/create-review.dto';
-import {AdvertReviewMemoryRepository} from '../advert-review/advert-review-memory.repository';
 import {AdvertReviewEntity} from '../advert-review/advert-review.entity';
+import {AdvertReviewRepository} from './advert-review.repository';
 
 @Injectable()
 export class CreateReviewService {
   constructor(
-    private readonly advertReviewRepository: AdvertReviewMemoryRepository
+    private readonly advertReviewRepository: AdvertReviewRepository
   ) {}
 
-  public async createCategory(dto: CreateReviewDto) {
-    const {text, rating, completeId} = dto;
+  public async createReview(dto: CreateReviewDto) {
+    const {text, rating, reviewId, completeValue} = dto;
 
     const advertReview = {
+      reviewId,
       text,
       rating,
-      completeId
+      completeValue
     };
 
     const existReview = await this.advertReviewRepository
-      .findById(text);
+      .findById(reviewId);
 
     if (existReview) {
       throw new ConflictException('Категория уже создана');
     }
 
-    const categoryEntity = await new AdvertReviewEntity(advertReview);
+    const reviewEntity = await new AdvertReviewEntity(advertReview);
 
     return this.advertReviewRepository
-      .create(categoryEntity);
+      .create(reviewEntity);
   }
 
   public async getList() {
-    return this.advertReviewRepository.getList({offset: 22, limit: 11});
+    return this.advertReviewRepository.find();
   }
 }

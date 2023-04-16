@@ -3,19 +3,19 @@ import {ApiResponse} from '@nestjs/swagger';
 import {fillObject} from '@project/util/util-core';
 import {CreateReviewService} from './create-review.service';
 import {CreateReviewDto} from './dto/create-review.dto';
-import {UserRdo} from '../../../../users/src/app/authentication/rdo/user.rdo';
+import {AdvertReviewsRdo} from '../advert-review/rdo/advert-reviews.rdo';
 
 @Controller('reviews')
 export class CreateReviewController {
-  constructor(private readonly createCategoryService: CreateReviewService) {}
+  constructor(private readonly createReviewService: CreateReviewService) {}
 
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'The new category has been successfully created.'
+    description: 'The new review has been successfully created.'
   })
-  @Post('create-category')
+  @Post('create-review')
   public async create(@Body() dto: CreateReviewDto) {
-    const newCategory = await this.createCategoryService.createCategory(dto);
-    return fillObject(UserRdo, newCategory);
+    const newReview = await this.createReviewService.createReview(dto);
+    return fillObject(AdvertReviewsRdo, newReview);
   }
 }

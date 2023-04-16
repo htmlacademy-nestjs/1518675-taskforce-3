@@ -1,8 +1,8 @@
 import {AdvertCategoryEntity} from '../advert-category/advert-category.entity';
-import {Category} from '@project/shared/app-types';
 import {Injectable} from '@nestjs/common';
 import {CRUDRepository} from '@project/util/util-types';
 import {PrismaService} from '../prisma/prisma.service';
+import {Category} from '@project/shared/shared-types';
 
 @Injectable()
 export class AdvertCategoryRepository implements CRUDRepository<AdvertCategoryEntity, number, Category> {

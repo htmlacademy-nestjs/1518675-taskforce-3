@@ -1,7 +1,7 @@
-import {Tag} from '@project/shared/app-types';
+import {Tag} from '@project/shared/shared-types';
 
 export class AdvertTagEntity implements Tag {
-  public _id: string;
+  public tagId: number;
   public tagName: string;
 
   constructor(advertTag: Tag) {
@@ -13,7 +13,7 @@ export class AdvertTagEntity implements Tag {
   }
 
   public fillEntity(advertTag: Tag) {
-    this._id = advertTag._id;
+    this.tagId = advertTag.tagId;
     this.tagName = advertTag.tagName;
   }
 }

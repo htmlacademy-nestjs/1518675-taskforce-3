@@ -32,7 +32,7 @@ model Task {
 
 model Category {
   categoryId Int      @id @default(autoincrement()) @map("category_id")
-  category   String
+  name       String
   createdAt  DateTime @default(now()) @map("created_at")
   tasks      Task[]
 
@@ -46,7 +46,7 @@ model Review {
   rating        Int
   completeValue Boolean  @default(false)
   user          String
-  userId        Int       @map("user_id")
+  userId        Int      @map("user_id")
   createdAt     DateTime @default(now()) @map("created_at")
 
   @@map("reviews")

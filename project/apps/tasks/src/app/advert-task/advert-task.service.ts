@@ -1,5 +1,4 @@
 import {Injectable} from '@nestjs/common';
-import {AdvertTaskMemoryRepository} from './advert-task-memory.repository';
 
 @Injectable()
 export class AdvertTaskService {

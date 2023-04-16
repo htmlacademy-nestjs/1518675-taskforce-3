@@ -2,7 +2,7 @@ import {Tag} from './tag.interface';
 import {Category} from './category.interface';
 
 export interface Task {
-  id?: number;
+  taskId?: number;
   title: string;
   description: string;
   category: Category;
@@ -11,4 +11,5 @@ export interface Task {
   address: string;
   tags: Tag[];
   city: string;
+  userId: string;
 }

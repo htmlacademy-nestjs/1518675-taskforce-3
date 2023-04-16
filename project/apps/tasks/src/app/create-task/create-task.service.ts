@@ -2,13 +2,13 @@ import {ConflictException, Injectable} from '@nestjs/common';
 import {CreateTaskDto} from './dto/create-task.dto';
 import {USER_IS_NOT_CUSTOMER} from './create-task.constant';
 import {AdvertTaskEntity} from '../advert-task/advert-task.entity';
-import {AdvertTaskMemoryRepository} from '../advert-task/advert-task-memory.repository';
+import {AdvertTaskRepository} from './advert-task.repository';
 
 @Injectable()
 export class CreateTaskService {
   private id: string; // временный id
   constructor(
-    private readonly advertTaskRepository: AdvertTaskMemoryRepository
+    private readonly advertTaskRepository: AdvertTaskRepository
   ) {}
 
   public async add(dto: CreateTaskDto) {
@@ -18,9 +18,9 @@ export class CreateTaskService {
       title,
       description,
       category: '',
-      price: '',
-      image: '',
-      address: '',
+      price,
+      image,
+      address,
       tags: '',
       city: ''
     };

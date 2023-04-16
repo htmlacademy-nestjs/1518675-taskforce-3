@@ -1,10 +1,10 @@
 import {CRUDRepository} from '@project/util/util-types';
 import {Injectable} from '@nestjs/common';
 import {AdvertUserEntity} from './advert-user.entity';
-import {User} from '@project/shared/app-types';
 import {AdvertUserModel} from './advert-user.model';
 import {Model} from 'mongoose';
 import {InjectModel} from '@nestjs/mongoose';
+import {User} from '@project/shared/shared-types';
 
 @Injectable()
 export class AdvertUserRepository implements CRUDRepository<AdvertUserEntity, string, User> {

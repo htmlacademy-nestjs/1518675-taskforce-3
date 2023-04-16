@@ -1,8 +1,8 @@
-import {Review} from '@project/shared/app-types';
 import {Injectable} from '@nestjs/common';
 import {CRUDRepository} from '@project/util/util-types';
 import {PrismaService} from '../prisma/prisma.service';
 import {AdvertReviewEntity} from '../advert-review/advert-review.entity';
+import {Review} from '@project/shared/shared-types';
 
 @Injectable()
 export class AdvertReviewRepository implements CRUDRepository<AdvertReviewEntity, number, Review> {

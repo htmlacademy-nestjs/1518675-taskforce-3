@@ -1,8 +1,8 @@
-import {Category} from '@project/shared/app-types';
+import {Category} from '@project/shared/shared-types';
 
 export class AdvertCategoryEntity implements Category {
-  public _id: string;
-  public category: string;
+  public categoryId: string;
+  public name: string;
 
   constructor(advertCategories: Category) {
     this.fillEntity(advertCategories);
@@ -13,7 +13,7 @@ export class AdvertCategoryEntity implements Category {
   }
 
   public fillEntity(advertCategories: Category) {
-    this._id = advertCategories._id;
-    this.category = advertCategories.category;
+    this.categoryId = advertCategories.categoryId;
+    this.name = advertCategories.name;
   }
 }

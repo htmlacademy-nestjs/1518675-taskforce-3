@@ -1,6 +1,6 @@
-import {User, UserRole} from '@project/shared/app-types';
 import {SALT_ROUNDS} from './advert-user.constant';
 import {compare, genSalt, hash} from 'bcrypt';
+import {User, UserRole} from '@project/shared/shared-types';
 
 export class AdvertUserEntity implements User {
   public _id: string;
