@@ -1,6 +1,6 @@
 import {Document} from 'mongoose';
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
-import {User, UserRole} from '@project/shared/app-types';
+import {User, UserRole} from '@project/shared/shared-types';
 
 @Schema({
   collection: 'users',

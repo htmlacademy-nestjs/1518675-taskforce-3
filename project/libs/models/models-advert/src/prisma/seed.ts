@@ -13,7 +13,7 @@ async function fillDb() {
           {
             title: 'Быстро сделаем банкротом',
             description: 'Описание юридической услуги. Описание юридической услуги. Описание юридической услуги.',
-            userId: '13',
+            userId: 13,
             price: '1000',
             image: 'picture.png',
             address: 'ул. Пушкина, д. Колотушкина',
@@ -40,7 +40,7 @@ async function fillDb() {
           {
             title: 'Качественная установка кондиционеров',
             description: 'Описание услуги. Описание услуги. Описание услуги.',
-            userId: '14',
+            userId: 14,
             price: '6000',
             image: 'picture-2.png',
             address: 'ул. Грибоедова, д. 25',
@@ -61,11 +61,15 @@ async function fillDb() {
     where: { reviewId: 1 },
     update: {},
     create: {
-      text: 'Работа выолнена неплохо',
+      text: 'Работа выполнена неплохо',
       rating: 4,
       completeValue: false,
       userId: 24,
-      category: 'Установка техники',
+      // category: {
+      //   categoryId: 412,
+      //   name: 'Установка бытовой техники',
+      //   createdAt: '02-03-2012'
+      // },
       user: 'Пепега'
     }
   });

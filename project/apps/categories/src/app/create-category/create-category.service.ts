@@ -1,10 +1,11 @@
 import { CreateCategoryDto } from './dto/create-category.dto';
-import { Category } from '@project/shared/app-types';
+// import { Category } from '@project/shared/app-types';
 import { AdvertCategoryRepository } from './advert-category.repository';
 import { Injectable } from '@nestjs/common';
 // import { AdvertCategoryEntity } from './advert-category.entity';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import {AdvertCategoryEntity} from '../advert-category/advert-category.entity';
+import {Category} from '@project/shared/shared-types';
 
 @Injectable()
 export class CreateCategoryService {

@@ -11,5 +11,5 @@ export interface Task {
   address: string;
   tags: Tag[];
   city: string;
-  userId: string;
+  userId: number;
 }

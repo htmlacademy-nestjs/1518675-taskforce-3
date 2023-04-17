@@ -2,6 +2,12 @@ import {ApiProperty} from '@nestjs/swagger';
 
 export class TaskRdo {
   @ApiProperty({
+    description: 'Task ID',
+    example: '53'
+  })
+  public taskId: number;
+
+  @ApiProperty({
     description: 'Task title',
     example: 'My task title'
   })
@@ -49,4 +55,10 @@ export class TaskRdo {
     example: 'Москва'
   })
   public city: string;
+
+  @ApiProperty({
+    description: 'Created task user ID',
+    example: '90'
+  })
+  public userId: number;
 }

@@ -3,4 +3,7 @@ export interface Review {
   text: string;
   completeValue: boolean;
   rating: number;
+  createdAt: Date;
+  user: string;
+  userId: number;
 }

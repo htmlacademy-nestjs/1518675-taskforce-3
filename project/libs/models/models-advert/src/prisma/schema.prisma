@@ -15,8 +15,7 @@ model Task {
   taskId      Int      @id @default(autoincrement())
   title       String   @default("")
   description String   @default("")
-  category    Category @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade, onUpdate: Cascade)
-  categoryId  Int      @map("category_id")
+  category    Category[]
   price       String   @default("")
   image       String   @default("")
   address     String   @default("")
@@ -25,7 +24,7 @@ model Task {
   createdAt   DateTime @default(now()) @map("created_at")
   publishAt   DateTime @updatedAt @map("publish_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  userId      String?  @map("user_id")
+  userId      Int      @map("user_id")
 
   @@map("tasks")
 }
@@ -41,7 +40,6 @@ model Category {
 
 model Review {
   reviewId      Int      @id @default(autoincrement())
-  category      String
   text          String
   rating        Int
   completeValue Boolean  @default(false)

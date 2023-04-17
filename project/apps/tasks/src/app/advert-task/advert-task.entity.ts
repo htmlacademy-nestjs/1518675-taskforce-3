@@ -12,7 +12,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
   public tags: Tag[];
   public city: string;
   public createdAt: Date;
-  public userId: string;
+  public userId: number;
 
   constructor(advertTask: Task) {
     this.fillEntity(advertTask);
@@ -29,6 +29,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
     this.tags = [];
     this.city = advertTask.city;
     this.createdAt = new Date();
+    this.userId = advertTask.userId;
   }
 
   public toObject(): AdvertTaskEntity {

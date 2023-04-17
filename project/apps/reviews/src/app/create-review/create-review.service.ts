@@ -10,13 +10,16 @@ export class CreateReviewService {
   ) {}
 
   public async createReview(dto: CreateReviewDto) {
-    const {text, rating, reviewId, completeValue} = dto;
+    const {text, rating, reviewId, completeValue, createdAt, user, userId} = dto;
 
     const advertReview = {
       reviewId,
       text,
       rating,
-      completeValue
+      completeValue,
+      user,
+      createdAt,
+      userId
     };
 
     const existReview = await this.advertReviewRepository

@@ -2,8 +2,20 @@ import {ApiProperty} from '@nestjs/swagger';
 
 export class AdvertCategoryRdo {
   @ApiProperty({
-    description: 'Categories array',
-    example: 'Юридические услуги, Ремонт бытовой техники'
+    description: 'Category ID',
+    example: '46'
   })
-  public tagNames: [];
+  public categoryId: [];
+
+  @ApiProperty({
+    description: 'Category name',
+    example: 'Юридические услуги'
+  })
+  public name: [];
+
+  @ApiProperty({
+    description: 'Category created date',
+    example: '02-12-2017'
+  })
+  public createdAt: [];
 }

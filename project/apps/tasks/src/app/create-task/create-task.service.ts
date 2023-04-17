@@ -6,23 +6,25 @@ import {AdvertTaskRepository} from './advert-task.repository';
 
 @Injectable()
 export class CreateTaskService {
-  private id: string; // временный id
+  private id: number; // временный id
   constructor(
     private readonly advertTaskRepository: AdvertTaskRepository
   ) {}
 
   public async add(dto: CreateTaskDto) {
-    const {title, description, category, price, image, address, tags, city} = dto;
+    const {taskId, title, description, category, price, image, address, tags, city, userId} = dto;
 
     const advertTask = {
+      taskId,
       title,
       description,
-      category: '',
+      category,
       price,
       image,
       address,
-      tags: '',
-      city: ''
+      tags: [],
+      city: '',
+      userId
     };
 
     const isCustomer = await this.advertTaskRepository
@@ -38,7 +40,7 @@ export class CreateTaskService {
       .create(taskEntity);
   }
 
-  public async getTask(id: string) {
+  public async getTask(id: number) {
     return this.advertTaskRepository.findById(id);
   }
 }
