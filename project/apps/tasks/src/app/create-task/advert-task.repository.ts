@@ -1,4 +1,4 @@
-import {AdvertTaskEntity} from '../advert-Task/advert-Task.entity';
+import {AdvertTaskEntity} from '../advert-task/advert-task.entity';
 import {Injectable} from '@nestjs/common';
 import {CRUDRepository} from '@project/util/util-types';
 import {PrismaService} from '../prisma/prisma.service';
@@ -11,7 +11,19 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public async create(item: AdvertTaskEntity): Promise<Task> {
     return this.prisma.task.create({
-      data: {...item.toObject()}
+      include: {
+        category: true,
+        tags: true
+      },
+      data: {
+        ...item.toObject(),
+        tags: {
+          create: item.tags
+        },
+        category: {
+          create: item.category
+        }
+      }
     });
   }
 

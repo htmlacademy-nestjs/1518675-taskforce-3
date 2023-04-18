@@ -1,4 +1,5 @@
 import {ApiProperty} from '@nestjs/swagger';
+import {Category} from '@project/shared/shared-types';
 
 export class TaskRdo {
   @ApiProperty({
@@ -24,7 +25,7 @@ export class TaskRdo {
     description: 'Task category',
     example: 'Study',
   })
-  public category: string;
+  public category: Category;
 
   @ApiProperty({
     description: 'Task price',
@@ -48,7 +49,7 @@ export class TaskRdo {
     description: 'Task tags',
     example: '#english, #pepega'
   })
-  public tags: string;
+  public tags: [];
 
   @ApiProperty({
     description: 'Task city',

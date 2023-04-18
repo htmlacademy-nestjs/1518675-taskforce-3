@@ -15,7 +15,8 @@ model Task {
   taskId      Int      @id @default(autoincrement())
   title       String   @default("")
   description String   @default("")
-  category    Category[]
+  category    Category @relation(fields: [categoryId], references: [categoryId])
+  categoryId  Int
   price       String   @default("")
   image       String   @default("")
   address     String   @default("")
