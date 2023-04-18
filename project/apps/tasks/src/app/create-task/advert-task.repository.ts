@@ -16,7 +16,13 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
         tags: true
       },
       data: {
-        ...item.toObject(),
+        title: item.title,
+        description: item.description,
+        price: item.price,
+        image: item.image,
+        address: item.address,
+        city: item.city,
+        userId: item.userId,
         tags: {
           create: item.tags
         },
@@ -29,6 +35,10 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public async destroy(taskId: number): Promise<void> {
     await this.prisma.task.delete({
+      include: {
+        category: true,
+        tags: true
+      },
       where: {
         taskId
       }
@@ -37,6 +47,10 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public findById(taskId: number): Promise<Task | null> {
     return this.prisma.task.findFirst({
+      include: {
+        category: true,
+        tags: true
+      },
       where: {
         taskId
       }
@@ -45,6 +59,10 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public findByTaskName(taskName: string): Promise<Task | null> {
     return this.prisma.task.findFirst({
+      include: {
+        category: true,
+        tags: true
+      },
       where: {
         title: taskName
       }
@@ -53,6 +71,10 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public find(ids: number[] = []): Promise<Task[]> {
     return this.prisma.task.findMany({
+      include: {
+        category: true,
+        tags: true
+      },
       where: {
         taskId: {
           in: ids.length > 0 ? ids : undefined
@@ -63,10 +85,17 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public update(taskId: number, item: AdvertTaskEntity): Promise<Task> {
     return this.prisma.task.update({
+      include: {
+        category: true,
+        tags: true
+      },
       where: {
         taskId
       },
-      data: {...item.toObject(), taskId}
+      data: {
+        ...item.toObject(),
+        taskId
+      }
     });
   }
 }
