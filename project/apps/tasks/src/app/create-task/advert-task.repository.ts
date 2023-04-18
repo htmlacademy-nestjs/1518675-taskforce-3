@@ -93,8 +93,13 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
         taskId
       },
       data: {
-        ...item.toObject(),
-        taskId
+        title: item.title,
+        description: item.description,
+        price: item.price,
+        image: item.image,
+        address: item.address,
+        city: item.city,
+        userId: item.userId
       }
     });
   }
