@@ -1,11 +1,15 @@
+import {Tag} from './tag.interface';
+import {Category} from './category.interface';
+
 export interface Task {
-  _id?: string;
+  taskId?: number;
   title: string;
   description: string;
-  category: string;
+  category: Category;
   price: string;
   image: string;
   address: string;
-  tags: string;
+  tags: Tag[];
   city: string;
+  userId: number;
 }

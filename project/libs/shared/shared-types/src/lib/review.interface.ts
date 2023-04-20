@@ -1,6 +1,9 @@
 export interface Review {
-  _id?: string;
+  reviewId?: number;
   text: string;
-  completeId: string;
+  completeValue: boolean;
   rating: number;
+  createdAt: Date;
+  user: string;
+  userId: number;
 }

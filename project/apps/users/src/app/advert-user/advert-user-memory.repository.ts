@@ -1,8 +1,8 @@
 import {CRUDRepository} from '@project/util/util-types';
 import {AdvertUserEntity} from './advert-user.entity';
-import {User} from '@project/shared/app-types';
 import {Injectable} from '@nestjs/common';
 import crypto from 'crypto';
+import {User} from '@project/shared/shared-types';
 
 @Injectable()
 export class AdvertUserMemoryRepository implements CRUDRepository<AdvertUserEntity, string, User> {

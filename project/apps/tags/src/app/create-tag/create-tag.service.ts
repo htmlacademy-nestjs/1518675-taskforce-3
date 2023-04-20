@@ -1,12 +1,12 @@
 import {Injectable} from '@nestjs/common';
 import {CreateTagDto} from './dto/create-tag.dto';
-import {AdvertTagMemoryRepository} from '../advert-tag/advert-tag-memory.repository';
 import {AdvertTagEntity} from '../advert-tag/advert-tag.entity';
+import {AdvertTagRepository} from './advert-tag.repository';
 
 @Injectable()
 export class CreateTagService {
   constructor(
-    private readonly advertTagRepository: AdvertTagMemoryRepository
+    private readonly advertTagRepository: AdvertTagRepository
   ) {}
 
   public async createTag(dto: CreateTagDto) {

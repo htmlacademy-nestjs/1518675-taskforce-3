@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
-import {AdvertTaskMemoryRepository} from './advert-task-memory.repository';
 import {AdvertTaskController} from './advert-task.controller';
 import {CreateTaskService} from '../create-task/create-task.service';
 import {AdvertTaskService} from './advert-task.service';
+import {AdvertTaskRepository} from '../create-task/advert-task.repository';
 
 @Module({
-  providers: [AdvertTaskMemoryRepository, CreateTaskService, AdvertTaskService],
+  imports: [],
+  providers: [CreateTaskService, AdvertTaskRepository, AdvertTaskService],
   controllers: [AdvertTaskController],
-  exports: [AdvertTaskMemoryRepository]
+  exports: [AdvertTaskService]
 })
 export class AdvertTaskModule {}

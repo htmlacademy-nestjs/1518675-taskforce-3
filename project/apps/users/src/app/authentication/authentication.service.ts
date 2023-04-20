@@ -1,11 +1,11 @@
-import {ConflictException, Inject, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {ConflictException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {CreateUserDto} from './dto/create-user.dto';
-import {UserRole} from '@project/shared/app-types';
 import dayjs from 'dayjs';
 import {AUTH_USER_EXISTS, AUTH_USER_NOT_FOUND, AUTH_USER_PASSWORD_WRONG} from './authentication.constant';
 import {AdvertUserEntity} from '../advert-user/advert-user.entity';
 import {LoginUserDto} from './dto/login-user.dto';
 import {AdvertUserRepository} from '../advert-user/advert-user.repository';
+import {UserRole} from '@project/shared/shared-types';
 
 @Injectable()
 export class AuthenticationService {

@@ -1,10 +1,8 @@
-import {Body, Controller, Get, HttpStatus, Param, Post} from '@nestjs/common';
+import {Controller, Get, HttpStatus, Param} from '@nestjs/common';
 import {fillObject} from '@project/util/util-core';
 import {ApiResponse, ApiTags} from '@nestjs/swagger';
-import {CreateTaskService} from '../create-task/create-task.service';
 import {TaskRdo} from './rdo/task.rdo';
 import {AdvertTaskService} from './advert-task.service';
-import {AdvertTaskMemoryRepository} from './advert-task-memory.repository';
 
 @ApiTags('get-task')
 @Controller('get-task')
@@ -20,7 +18,7 @@ export class AdvertTaskController {
     description: 'Task found'
   })
   @Get(':id')
-  public async show(@Param('id') id: string) {
+  public async show(@Param('id') id: number) {
     const existTask = await this.advertTaskService.getTask(id);
     return fillObject(TaskRdo, existTask);
   }

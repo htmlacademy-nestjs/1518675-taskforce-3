@@ -1,10 +1,13 @@
-import {Category, Review} from '@project/shared/app-types';
+import {Review, User} from '@project/shared/shared-types';
 
 export class AdvertReviewEntity implements Review {
-  public _id: string;
+  public reviewId: number;
   public text: string;
-  public completeId: string;
+  public completeValue: boolean;
   public rating: number;
+  public createdAt: Date;
+  public user: string;
+  public userId: number;
 
   constructor(advertReview: Review) {
     this.fillEntity(advertReview);
@@ -15,9 +18,9 @@ export class AdvertReviewEntity implements Review {
   }
 
   public fillEntity(advertReview: Review) {
-    this._id = advertReview._id;
+    this.reviewId = advertReview.reviewId;
     this.text = advertReview.text;
-    this.completeId = advertReview.completeId;
+    this.completeValue = advertReview.completeValue;
     this.rating = advertReview.rating;
   }
 }

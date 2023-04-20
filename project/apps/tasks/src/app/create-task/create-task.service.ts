@@ -2,27 +2,29 @@ import {ConflictException, Injectable} from '@nestjs/common';
 import {CreateTaskDto} from './dto/create-task.dto';
 import {USER_IS_NOT_CUSTOMER} from './create-task.constant';
 import {AdvertTaskEntity} from '../advert-task/advert-task.entity';
-import {AdvertTaskMemoryRepository} from '../advert-task/advert-task-memory.repository';
+import {AdvertTaskRepository} from './advert-task.repository';
 
 @Injectable()
 export class CreateTaskService {
-  private id: string; // временный id
+  private id: number; // временный id
   constructor(
-    private readonly advertTaskRepository: AdvertTaskMemoryRepository
+    private readonly advertTaskRepository: AdvertTaskRepository
   ) {}
 
   public async add(dto: CreateTaskDto) {
-    const {title, description, category, price, image, address, tags, city} = dto;
+    const {taskId, title, description, category, price, image, address, tags, city, userId} = dto;
 
     const advertTask = {
+      taskId,
       title,
       description,
-      category: '',
-      price: '',
-      image: '',
-      address: '',
-      tags: '',
-      city: ''
+      category,
+      price,
+      image,
+      address,
+      tags: [],
+      city: '',
+      userId
     };
 
     const isCustomer = await this.advertTaskRepository
@@ -38,7 +40,7 @@ export class CreateTaskService {
       .create(taskEntity);
   }
 
-  public async getTask(id: string) {
+  public async getTask(id: number) {
     return this.advertTaskRepository.findById(id);
   }
 }
