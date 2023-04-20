@@ -6,6 +6,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
   public title: string;
   public description: string;
   public category: Category;
+  public categoryId: string;
   public price: string;
   public image: string;
   public address: string;
@@ -23,6 +24,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
     this.title = advertTask.title;
     this.description = advertTask.description;
     this.category = advertTask.category;
+    this.categoryId = advertTask.categoryId;
     this.price = advertTask.price;
     this.image = advertTask.image;
     this.address = advertTask.address;

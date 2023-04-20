@@ -22,12 +22,12 @@ export class CreateReviewService {
       userId
     };
 
-    const existReview = await this.advertReviewRepository
-      .findById(reviewId);
-
-    if (existReview) {
-      throw new ConflictException('Категория уже создана');
-    }
+    // const existReview = await this.advertReviewRepository
+    //   .findById(reviewId);
+    //
+    // if (existReview) {
+    //   throw new ConflictException('Категория уже создана');
+    // }
 
     const reviewEntity = await new AdvertReviewEntity(advertReview);
 
