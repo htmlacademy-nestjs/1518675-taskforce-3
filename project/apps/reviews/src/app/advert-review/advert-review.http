@@ -1,11 +1,12 @@
 ### Create a new review
-POST http://localhost:3333/api/reviews HTTP/1.1
+POST http://localhost:3333/api/reviews/create-review HTTP/1.1
 Content-Type: application/json
 
 {
   "text": "Прекрасно выполненная работа",
   "rating": 4,
-  "completeValue": false
+  "completeValue": false,
+  "userId": 52
 }
 
 ### Delete review by ID

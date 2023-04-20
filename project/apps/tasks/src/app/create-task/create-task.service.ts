@@ -12,6 +12,7 @@ export class CreateTaskService {
   ) {}
 
   public async add(dto: CreateTaskDto) {
+    console.log('dto:', dto);
     const {taskId, title, description, category, price, image, address, tags, city, userId} = dto;
 
     const advertTask = {
@@ -27,12 +28,12 @@ export class CreateTaskService {
       userId
     };
 
-    const isCustomer = await this.advertTaskRepository
-      .findById(this.id);
+    // const isCustomer = await this.advertTaskRepository
+    //   .findById(this.id);
 
-    if (!isCustomer) {
-      throw new ConflictException(USER_IS_NOT_CUSTOMER);
-    }
+    // if (!isCustomer) {
+    //   throw new ConflictException(USER_IS_NOT_CUSTOMER);
+    // }
 
     const taskEntity = await new AdvertTaskEntity(advertTask);
 

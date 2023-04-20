@@ -10,6 +10,7 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
   }
 
   public async create(item: AdvertTaskEntity): Promise<Task> {
+    console.log(item);
     return this.prisma.task.create({
       include: {
         category: true,
@@ -26,9 +27,7 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
         tags: {
           create: item.tags
         },
-        category: {
-          create: item.category
-        }
+        categoryId: item.categoryId
       }
     });
   }
