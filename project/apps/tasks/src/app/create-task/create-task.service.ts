@@ -3,6 +3,7 @@ import {CreateTaskDto} from './dto/create-task.dto';
 import {USER_IS_NOT_CUSTOMER} from './create-task.constant';
 import {AdvertTaskEntity} from '../advert-task/advert-task.entity';
 import {AdvertTaskRepository} from './advert-task.repository';
+import {Task} from '@project/shared/shared-types';
 
 @Injectable()
 export class CreateTaskService {
@@ -13,13 +14,13 @@ export class CreateTaskService {
 
   public async add(dto: CreateTaskDto) {
     console.log('dto:', dto);
-    const {taskId, title, description, category, price, image, address, tags, city, userId} = dto;
+    const {taskId, title, description, categoryId, price, image, address, tags, city, userId} = dto;
 
-    const advertTask = {
-      taskId,
+    const advertTask: Task = {
+      taskId: Number(taskId),
       title,
       description,
-      category,
+      categoryId,
       price,
       image,
       address,
@@ -39,9 +40,5 @@ export class CreateTaskService {
 
     return this.advertTaskRepository
       .create(taskEntity);
-  }
-
-  public async getTask(id: number) {
-    return this.advertTaskRepository.findById(id);
   }
 }

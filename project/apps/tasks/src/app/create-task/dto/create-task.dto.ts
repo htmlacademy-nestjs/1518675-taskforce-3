@@ -25,7 +25,7 @@ export class CreateTaskDto {
     description: 'Task category',
     example: 'Study',
   })
-  public category: Category;
+  public categoryId: number;
 
   @ApiProperty({
     description: 'Task price',
@@ -62,5 +62,5 @@ export class CreateTaskDto {
     description: 'Task userID',
     example: '2141'
   })
-  public userId: number;
+  public userId: string;
 }

@@ -13,7 +13,7 @@ async function fillDb() {
           {
             title: 'Быстро сделаем банкротом',
             description: 'Описание юридической услуги. Описание юридической услуги. Описание юридической услуги.',
-            userId: 13,
+            userId: '214124',
             price: '1000',
             image: 'picture.png',
             address: 'ул. Пушкина, д. Колотушкина',
@@ -40,7 +40,7 @@ async function fillDb() {
           {
             title: 'Качественная установка кондиционеров',
             description: 'Описание услуги. Описание услуги. Описание услуги.',
-            userId: 14,
+            userId: '124142',
             price: '6000',
             image: 'picture-2.png',
             address: 'ул. Грибоедова, д. 25',

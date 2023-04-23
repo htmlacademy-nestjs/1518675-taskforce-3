@@ -3,7 +3,6 @@ import {AdvertTaskRepository} from '../create-task/advert-task.repository';
 
 @Injectable()
 export class AdvertTaskService {
-  private id: string; // временный id
   constructor(
     private readonly AdvertTaskRepository: AdvertTaskRepository
   ) {}

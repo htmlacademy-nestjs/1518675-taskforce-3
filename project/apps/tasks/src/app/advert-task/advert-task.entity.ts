@@ -5,15 +5,15 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
   public taskId: number;
   public title: string;
   public description: string;
-  public category: Category;
-  public categoryId: string;
+  public category?: Category;
+  public categoryId?: number;
   public price: string;
   public image: string;
   public address: string;
   public tags: Tag[];
   public city: string;
   public createdAt: Date;
-  public userId: number;
+  public userId: string;
 
   constructor(advertTask: Task) {
     this.fillEntity(advertTask);
