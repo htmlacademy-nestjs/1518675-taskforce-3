@@ -2,7 +2,7 @@ import {ApiProperty} from '@nestjs/swagger';
 import {User} from '@project/shared/shared-types';
 
 export class CreateReviewDto {
-  public reviewId: number;
+  // public reviewId: number;
 
   @ApiProperty({
     description: 'Review text',
@@ -27,12 +27,6 @@ export class CreateReviewDto {
     example: false
   })
   public createdAt: Date;
-
-  @ApiProperty({
-    description: 'Review user object',
-    example: false
-  })
-  public user: string;
 
   @ApiProperty({
     description: 'Review user ID',

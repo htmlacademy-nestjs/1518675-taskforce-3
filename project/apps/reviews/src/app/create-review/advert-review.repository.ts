@@ -26,7 +26,7 @@ export class AdvertReviewRepository implements CRUDRepository<AdvertReviewEntity
   public findById(reviewId: number): Promise<Review | null> {
     return this.prisma.review.findFirst({
       where: {
-        reviewId
+        reviewId: Number(reviewId)
       }
     });
   }

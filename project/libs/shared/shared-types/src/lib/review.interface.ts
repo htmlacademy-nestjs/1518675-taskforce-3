@@ -4,6 +4,5 @@ export interface Review {
   completeValue: boolean;
   rating: number;
   createdAt: Date;
-  user: string;
-  userId: number;
+  userId?: number;
 }

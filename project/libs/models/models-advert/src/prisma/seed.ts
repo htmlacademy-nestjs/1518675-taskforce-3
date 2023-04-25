@@ -70,7 +70,6 @@ async function fillDb() {
       //   name: 'Установка бытовой техники',
       //   createdAt: '02-03-2012'
       // },
-      user: 'Пепега'
     }
   });
   console.info('🤘️ Database was filled')

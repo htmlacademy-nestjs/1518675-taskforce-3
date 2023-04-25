@@ -44,7 +44,6 @@ model Review {
   text          String
   rating        Int
   completeValue Boolean  @default(false)
-  user          String
   userId        Int      @map("user_id")
   createdAt     DateTime @default(now()) @map("created_at")
 

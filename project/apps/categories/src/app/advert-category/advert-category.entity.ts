@@ -17,6 +17,5 @@ export class AdvertCategoryEntity implements Category {
     this.categoryId = advertCategories.categoryId;
     this.name = advertCategories.name;
     this.createdAt = advertCategories.createdAt;
-
   }
 }

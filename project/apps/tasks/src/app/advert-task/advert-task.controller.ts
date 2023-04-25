@@ -15,22 +15,22 @@ export class AdvertTaskController {
   @ApiResponse({
     type: TaskRdo,
     status: HttpStatus.OK,
-    description: 'Task found'
+    description: 'Tasks found'
   })
-  @Get(':id')
-  public async show(@Param('id') id: number) {
-    const existTask = await this.advertTaskService.getTask(id);
+  @Get('list')
+  public async getList() {
+    const existTask = await this.advertTaskService.getList();
     return fillObject(TaskRdo, existTask);
   }
 
   @ApiResponse({
     type: TaskRdo,
     status: HttpStatus.OK,
-    description: 'Tasks found'
+    description: 'Task found'
   })
-  @Get('list')
-  public async getList() {
-    const existTask = await this.advertTaskService.getList();
+  @Get(':id')
+  public async show(@Param('id') id: number) {
+    const existTask = await this.advertTaskService.getTask(id);
     return fillObject(TaskRdo, existTask);
   }
 

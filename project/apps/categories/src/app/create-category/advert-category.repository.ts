@@ -10,7 +10,6 @@ export class AdvertCategoryRepository implements CRUDRepository<AdvertCategoryEn
   }
 
   public async create(item: AdvertCategoryEntity): Promise<Category> {
-    console.log('item', item);
     return this.prisma.category.create({
       data: {...item.toObject()}
     });
