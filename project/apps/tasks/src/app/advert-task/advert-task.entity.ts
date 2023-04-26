@@ -37,7 +37,7 @@ export class AdvertTaskEntity implements Entity<AdvertTaskEntity>, Task {
   public toObject(): AdvertTaskEntity {
     return {
       ...this,
-      tags: this.tags.map(({tagName}) => ({tagName})),
+      tags: [...this.tags]
     };
   }
 }

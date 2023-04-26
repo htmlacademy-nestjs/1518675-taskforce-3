@@ -5,3 +5,4 @@ export * from './lib/tag.interface';
 export * from './lib/category.interface';
 export * from './lib/review.interface';
 export * from './lib/file.interface';
+export * from './lib/token-payload.interface';

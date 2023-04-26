@@ -1,8 +1,9 @@
-import {Controller, Get, HttpStatus, Param} from '@nestjs/common';
+import {Controller, Get, HttpStatus, Param, Query} from '@nestjs/common';
 import {fillObject} from '@project/util/util-core';
 import {ApiResponse, ApiTags} from '@nestjs/swagger';
 import {TaskRdo} from './rdo/task.rdo';
 import {AdvertTaskService} from './advert-task.service';
+import {TaskQuery} from './query/task.query';
 
 @ApiTags('get-task')
 @Controller('get-task')
@@ -18,8 +19,8 @@ export class AdvertTaskController {
     description: 'Tasks found'
   })
   @Get('list')
-  public async getList() {
-    const existTask = await this.advertTaskService.getList();
+  public async getList(@Query() query: TaskQuery) {
+    const existTask = await this.advertTaskService.getList(query);
     return fillObject(TaskRdo, existTask);
   }
 

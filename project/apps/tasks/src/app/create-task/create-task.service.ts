@@ -13,7 +13,6 @@ export class CreateTaskService {
   ) {}
 
   public async add(dto: CreateTaskDto) {
-    console.log('dto:', dto);
     const {taskId, title, description, categoryId, price, image, address, tags, city, userId} = dto;
 
     const advertTask: Task = {

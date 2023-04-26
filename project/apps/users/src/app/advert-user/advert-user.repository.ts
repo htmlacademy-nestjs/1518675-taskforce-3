@@ -15,8 +15,6 @@ export class AdvertUserRepository implements CRUDRepository<AdvertUserEntity, st
   public async create(item: AdvertUserEntity): Promise<User> {
     const newAdvertUser = new this.advertUserModel(item);
 
-    console.log(newAdvertUser);
-
     return newAdvertUser.save();
   }
 
