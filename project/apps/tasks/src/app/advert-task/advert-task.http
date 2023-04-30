@@ -25,5 +25,5 @@ GET http://localhost:3333/api/get-task/1 HTTP/1.1
 ### Get all tasks
 GET http://localhost:3333/api/get-task/list HTTP/1.1
 
-### Get all tasks and filtres
+### Get all tasks and filters
 GET http://localhost:3333/api/get-task/list?sortDirection=desc&categories=1&limit=2&page=1 HTTP/1.1
