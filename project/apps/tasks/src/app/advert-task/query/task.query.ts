@@ -6,7 +6,7 @@ export class TaskQuery {
   @Transform(({ value } ) => +value || DEFAULT_TASK_COUNT_LIMIT)
   @IsNumber()
   @IsOptional()
-  public limit = DEFAULT_TASK_COUNT_LIMIT;
+  public limit? = DEFAULT_TASK_COUNT_LIMIT;
 
   @Transform(({ value }) => value.split(',').map((categoryId) => +categoryId))
   @IsArray({})
@@ -15,9 +15,9 @@ export class TaskQuery {
 
   @IsIn(['asc', 'desc'])
   @IsOptional()
-  public sortDirection: 'desc' | 'asc' = DEFAULT_SORT_DIRECTION;
+  public sortDirection?: 'desc' | 'asc' = DEFAULT_SORT_DIRECTION;
 
   @Transform(({ value }) => +value)
   @IsOptional()
-  public page: number;
+  public page?: number;
 }

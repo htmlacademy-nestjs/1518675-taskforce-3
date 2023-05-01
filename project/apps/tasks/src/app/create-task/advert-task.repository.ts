@@ -71,10 +71,21 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
 
   public find({
                 limit = DEFAULT_TASK_COUNT_LIMIT,
-                categories = [1],
+                categories,
                 sortDirection = 'desc',
                 page = 1
-  }: TaskQuery): Promise<Task[]> {
+              }: TaskQuery): Promise<Task[]> {
+
+    let categoriesArr = [];
+
+    console.log('categories:', typeof categories);
+
+    let arrParamNumbers;
+    if (categories) {
+      // @ts-ignore
+      const paramsArr = categories.split(',');
+      arrParamNumbers = paramsArr.map((item) => Number(item));
+    }
 
     return this.prisma.task.findMany({
       include: {
@@ -82,18 +93,11 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
         tags: true
       },
       where: {
-        categoryId: Number(categories[0]),
-        // categories: {
-        //   some: {
-        //     categoryId: {
-        //       in: categories
-        //     }
-        //   }
-        // }
+        categoryId: {in: arrParamNumbers},
       },
       take: Number(limit),
       orderBy: [
-        { createdAt: sortDirection }
+        {createdAt: sortDirection}
       ],
       skip: page > 0 ? limit * (page - 1) : undefined,
     });
