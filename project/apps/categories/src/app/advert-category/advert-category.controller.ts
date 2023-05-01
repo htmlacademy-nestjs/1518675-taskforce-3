@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Patch, Post} from '@nestjs/common';
 import {ApiResponse} from '@nestjs/swagger';
 import {AdvertCategoryRdo} from './rdo/advert-categories.rdo';
 import {CreateCategoryService} from '../create-category/create-category.service';
@@ -16,9 +16,8 @@ export class AdvertCategoryController {
     description: 'Categories found'
   })
   @Get('/:id')
-  async show(@Param('id') id: string) {
-    const categoryId = parseInt(id, 10);
-    const existCategory = await this.createCategoryService.getCategory(categoryId);
+  async show(@Param('id') id: number) {
+    const existCategory = await this.createCategoryService.getCategory(id);
     return fillObject(AdvertCategoryRdo, existCategory);
   }
 
@@ -36,15 +35,13 @@ export class AdvertCategoryController {
 
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async destroy(@Param('id') id: string) {
-    const categoryId = parseInt(id, 10);
-    this.createCategoryService.deleteCategory(categoryId);
+  async destroy(@Param('id') id: number) {
+    await this.createCategoryService.deleteCategory(id);
   }
 
   @Patch('/:id')
-  async update(@Param('id') id: string, @Body() dto: UpdateCategoryDto) {
-    const categoryId = parseInt(id, 10);
-    const updatedCategory = await this.createCategoryService.updateCategory(categoryId, dto)
+  async update(@Param('id') id: number, @Body() dto: UpdateCategoryDto) {
+    const updatedCategory = await this.createCategoryService.updateCategory(id, dto)
     return fillObject(AdvertCategoryRdo, updatedCategory);
   }
 }

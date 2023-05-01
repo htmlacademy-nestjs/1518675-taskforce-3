@@ -1,8 +1,9 @@
-import {Controller, Get, HttpStatus, Param} from '@nestjs/common';
+import {Controller, Get, HttpStatus, Param, Query} from '@nestjs/common';
 import {fillObject} from '@project/util/util-core';
-import {ApiResponse, ApiTags} from '@nestjs/swagger';
+import {ApiProperty, ApiResponse, ApiTags} from '@nestjs/swagger';
 import {TaskRdo} from './rdo/task.rdo';
 import {AdvertTaskService} from './advert-task.service';
+import {TaskQuery} from './query/task.query';
 
 @ApiTags('get-task')
 @Controller('get-task')
@@ -15,22 +16,23 @@ export class AdvertTaskController {
   @ApiResponse({
     type: TaskRdo,
     status: HttpStatus.OK,
-    description: 'Task found'
+    description: 'Tasks found'
   })
-  @Get(':id')
-  public async show(@Param('id') id: number) {
-    const existTask = await this.advertTaskService.getTask(id);
+  @ApiProperty({isArray: true, type: Number})
+  @Get('list')
+  public async getList(@Query() query: TaskQuery) {
+    const existTask = await this.advertTaskService.getList(query);
     return fillObject(TaskRdo, existTask);
   }
 
   @ApiResponse({
     type: TaskRdo,
     status: HttpStatus.OK,
-    description: 'Tasks found'
+    description: 'Task found'
   })
-  @Get('list')
-  public async getList() {
-    const existTask = await this.advertTaskService.getList();
+  @Get(':id')
+  public async show(@Param('id') id: number) {
+    const existTask = await this.advertTaskService.getTask(id);
     return fillObject(TaskRdo, existTask);
   }
 

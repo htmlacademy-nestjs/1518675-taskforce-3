@@ -1,9 +1,10 @@
 import {Injectable} from '@nestjs/common';
 import {AdvertTaskRepository} from '../create-task/advert-task.repository';
+import {TaskQuery} from './query/task.query';
+import {Task} from '@project/shared/shared-types';
 
 @Injectable()
 export class AdvertTaskService {
-  private id: string; // временный id
   constructor(
     private readonly AdvertTaskRepository: AdvertTaskRepository
   ) {}
@@ -12,8 +13,8 @@ export class AdvertTaskService {
     return this.AdvertTaskRepository.findById(id);
   }
 
-  public async getList() {
-    return this.AdvertTaskRepository.find();
+  public async getList(query: TaskQuery): Promise<Task[]> {
+    return this.AdvertTaskRepository.find(query);
   }
 
   public async updateTask(item) {

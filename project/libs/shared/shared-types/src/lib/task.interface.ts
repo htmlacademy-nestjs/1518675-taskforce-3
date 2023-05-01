@@ -5,12 +5,12 @@ export interface Task {
   taskId?: number;
   title: string;
   description: string;
-  category: Category;
-  categoryId: string;
+  category?: Category;
+  categoryId?: number;
   price: string;
   image: string;
   address: string;
   tags: Tag[];
   city: string;
-  userId: number;
+  userId: string;
 }

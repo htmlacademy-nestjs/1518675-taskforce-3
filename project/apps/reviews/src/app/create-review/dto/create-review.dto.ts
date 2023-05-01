@@ -1,25 +1,26 @@
 import {ApiProperty} from '@nestjs/swagger';
-import {User} from '@project/shared/shared-types';
+import {IsBoolean, IsInt, IsString} from 'class-validator';
 
 export class CreateReviewDto {
-  public reviewId: number;
-
   @ApiProperty({
     description: 'Review text',
     example: 'Отличный заказчик. Работа сделана безукоризненно!'
   })
+  @IsString()
   public text: string;
 
   @ApiProperty({
     description: 'Review rating',
     example: 4
   })
+  @IsInt()
   public rating: number;
 
   @ApiProperty({
     description: 'Review complete task status',
     example: false
   })
+  @IsBoolean()
   public completeValue: boolean;
 
   @ApiProperty({
@@ -29,15 +30,10 @@ export class CreateReviewDto {
   public createdAt: Date;
 
   @ApiProperty({
-    description: 'Review user object',
-    example: false
-  })
-  public user: string;
-
-  @ApiProperty({
     description: 'Review user ID',
-    example: false
+    example: '8826158'
   })
+  @IsString()
   public userId: number;
 
 }

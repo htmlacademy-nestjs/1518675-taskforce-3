@@ -3,6 +3,8 @@ import {Injectable} from '@nestjs/common';
 import {CRUDRepository} from '@project/util/util-types';
 import {PrismaService} from '../prisma/prisma.service';
 import {Task} from '@project/shared/shared-types';
+import {TaskQuery} from '../advert-task/query/task.query';
+import {DEFAULT_TASK_COUNT_LIMIT} from '../advert-task/advert-task.constant';
 
 @Injectable()
 export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, number, Task> {
@@ -10,7 +12,6 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
   }
 
   public async create(item: AdvertTaskEntity): Promise<Task> {
-    console.log(item);
     return this.prisma.task.create({
       include: {
         category: true,
@@ -51,7 +52,7 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
         tags: true
       },
       where: {
-        taskId
+        taskId: Number(taskId)
       }
     });
   }
@@ -68,17 +69,37 @@ export class AdvertTaskRepository implements CRUDRepository<AdvertTaskEntity, nu
     });
   }
 
-  public find(ids: number[] = []): Promise<Task[]> {
+  public find({
+                limit = DEFAULT_TASK_COUNT_LIMIT,
+                categories,
+                sortDirection = 'desc',
+                page = 1
+              }: TaskQuery): Promise<Task[]> {
+
+    let categoriesArr = [];
+
+    console.log('categories:', typeof categories);
+
+    let arrParamNumbers;
+    if (categories) {
+      // @ts-ignore
+      const paramsArr = categories.split(',');
+      arrParamNumbers = paramsArr.map((item) => Number(item));
+    }
+
     return this.prisma.task.findMany({
       include: {
         category: true,
         tags: true
       },
       where: {
-        taskId: {
-          in: ids.length > 0 ? ids : undefined
-        }
-      }
+        categoryId: {in: arrParamNumbers},
+      },
+      take: Number(limit),
+      orderBy: [
+        {createdAt: sortDirection}
+      ],
+      skip: page > 0 ? limit * (page - 1) : undefined,
     });
   }
 

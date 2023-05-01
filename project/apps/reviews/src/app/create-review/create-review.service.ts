@@ -10,14 +10,12 @@ export class CreateReviewService {
   ) {}
 
   public async createReview(dto: CreateReviewDto) {
-    const {text, rating, reviewId, completeValue, createdAt, user, userId} = dto;
+    const {text, rating, completeValue, createdAt, userId} = dto;
 
     const advertReview = {
-      reviewId,
       text,
       rating,
       completeValue,
-      user,
       createdAt,
       userId
     };
@@ -37,5 +35,9 @@ export class CreateReviewService {
 
   public async getList() {
     return this.advertReviewRepository.find();
+  }
+
+  public async getReview(id: number) {
+    return this.advertReviewRepository.findById(id);
   }
 }

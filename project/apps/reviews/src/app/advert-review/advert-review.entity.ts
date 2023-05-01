@@ -1,13 +1,12 @@
 import {Review, User} from '@project/shared/shared-types';
 
 export class AdvertReviewEntity implements Review {
-  public reviewId: number;
+  public reviewId?: number;
   public text: string;
   public completeValue: boolean;
   public rating: number;
   public createdAt: Date;
-  public user: string;
-  public userId: number;
+  public userId?: number;
 
   constructor(advertReview: Review) {
     this.fillEntity(advertReview);
@@ -22,5 +21,7 @@ export class AdvertReviewEntity implements Review {
     this.text = advertReview.text;
     this.completeValue = advertReview.completeValue;
     this.rating = advertReview.rating;
+    this.createdAt = advertReview.createdAt;
+    this.userId = advertReview.userId;
   }
 }
